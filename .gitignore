@@ -1,0 +1,17 @@
+# OS and editors
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Secrets never belong here
+.env
+.env.*
+*.env
+
+# Local Claude Code state
+.claude/settings.local.json
+.claude/worktrees/
+
+# Logs
+*.log

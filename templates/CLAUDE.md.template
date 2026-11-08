@@ -1,0 +1,74 @@
+# <Project name>
+
+<!-- Level 3 of the governance stack: the doctrine. Loaded at every session.
+     Keep it factual and current; anything that has drifted twice belongs in CONTRACT.md too.
+     Aim for a document a new teammate (human or agent) can read in ten minutes. -->
+
+<One paragraph: what the product does, for whom, and through which interfaces.>
+
+> **Product constraints:** <regulatory status, what the product must never do or claim>
+> **Production:** never run a command that touches production without an explicit request.
+
+## Structure
+
+<!-- A short tree of the repo. One line per top-level folder, with its purpose. -->
+
+## Commands
+
+<!-- Setup, dev, build, quality (lint, type check, tests), anything an agent runs daily.
+     Exact commands, copy-pasteable. -->
+
+## Boundaries
+
+<!-- What each layer may and may not import or depend on. A table works well. -->
+
+## Conventions
+
+<!-- Naming, typing rules, date and number formats, where validation lives. Only what is not obvious from the code. -->
+
+## The 20/80 frame: governance vs vibe-code
+
+<!-- A judgment filter applied before each task, not a command router.
+     Over-engineering a throwaway costs as much as under-engineering a production change. -->
+
+| Task type | Posture |
+| --- | --- |
+| Proof of concept, exploration, one-line fix, refactor without behavior change | **Direct**: rigor here is over-engineering |
+| More than 30 min, several steps, costly to redo if wrong | **Let the process run**: brainstorm, spec, plan, reviews |
+| Production path, data model, security and secrets, money or calculations, permissions | **Rigor mandatory**: tests first, gates, human go |
+
+**Warning sign:** "I'll just vibe-code this quickly" on a task that ticks two or more boxes of the last row. Stop and apply the rigor.
+
+## Quality gates and merge procedure
+
+<!-- List each CI job, whether it blocks, and what it catches.
+     Then the exact merge procedure, ideally automated by a script that exits 0 (go) or 1 (stop).
+     Validate the exact commit being promoted, not "the last green run". -->
+
+## Parallel sessions and subagents
+
+<!-- One session = one worktree. How to start one, which resources need a lock,
+     how subagents are confined (every command prefixed with `cd <worktree> &&`). -->
+
+## Session closing
+
+<!-- Frugality, not ceremony. Each step has a trigger; no trigger, no action. -->
+
+1. **Git state:** branch, unpushed commits, open pull requests. Never lose uncommitted work silently.
+2. **Worktrees:** remove only what is merged and clean.
+3. **Tasks:** status lives in the issue tracker, not in a Markdown file.
+4. **Memory:** only a non-obvious lesson, a durable decision or a resume point. Never what git or this file already records.
+5. **Docs:** update this file when behavior, architecture, an invariant or a command changed.
+6. **Drift log:** one entry per rule that was ignored during the session.
+
+## Memory
+
+<!-- Where advisory memory lives, what goes in it, what never does. -->
+
+## Do not
+
+<!-- Short list of hard "never" items specific to this repo. Mirror the critical ones in CONTRACT.md. -->
+
+## Documentation index
+
+<!-- Pointers to deeper docs: architecture, gate, runbooks. -->
